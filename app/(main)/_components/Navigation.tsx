@@ -30,8 +30,10 @@ import {
 } from '@/components/ui/popover'
 import TrashBox from './TrashBox'
 import Navbar from './Navbar'
+import { useRouter } from 'next/navigation'
 
 const Navigation = () => {
+  const router = useRouter()
   const settings = useSettings()
   const search = useSearch()
   const params = useParams()
@@ -120,7 +122,8 @@ const Navigation = () => {
   }
 
   const handleCreate = () => {
-    const promise = create({ title: 'Untitled' })
+    const promise = create({ title: "Untitled" })
+      .then((documentId) => router.push(`/documents/${documentId}`))
 
     toast.promise(promise, {
       loading: 'Memuat note baru...',
