@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   AlertDialog,
@@ -9,21 +9,24 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+  AlertDialogTrigger
+} from "@/components/ui/alert-dialog";
 
 interface ConfirmModalProps {
-  children: React.ReactNode
-  onConfirm: () => void
-}
+  children: React.ReactNode;
+  onConfirm: () => void;
+};
 
-export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
+export const ConfirmModal = ({
+  children,
+  onConfirm
+}: ConfirmModalProps) => {
   const handleConfirm = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    e.stopPropagation()
-    onConfirm()
-  }
+    e.stopPropagation();
+    onConfirm();
+  };
 
   return (
     <AlertDialog>
@@ -32,17 +35,19 @@ export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Apakah kamu yakin?</AlertDialogTitle>
+          <AlertDialogTitle>
+            Are you absolutely sure?
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            Tindakan ini tidak bisa di batalkan.
+            This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
-            Batal
+          <AlertDialogCancel onClick={e => e.stopPropagation()}>
+            Cancel
           </AlertDialogCancel>
           <AlertDialogAction onClick={handleConfirm}>
-            Konfirmasi
+            Confirm
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
